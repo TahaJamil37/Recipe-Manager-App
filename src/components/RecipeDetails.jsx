@@ -2,13 +2,17 @@ import React from 'react'
 import { data, useParams } from 'react-router-dom'
 import IngredientsList from './IngredientsList';
 import Steps from './Steps';
+import { RecipeContext } from "./RecipeContext";
 
 
 
-export default function RecipeDetails({recipes}) {
+export default function RecipeDetails() {
+
+
+  const { allrecipes } = React.useContext(RecipeContext);
 
     const id = useParams().id;
-    const recipe= recipes?.find((data)=>data?.id==Number(id))
+    const recipe= allrecipes?.find((data)=>data?.id==Number(id))
     
   return (
 

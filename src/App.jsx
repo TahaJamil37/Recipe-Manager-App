@@ -1,32 +1,30 @@
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
+import RecipeList from "./components/RecipeList";
+import RecipeDetails from "./components/RecipeDetails";
 
-import './App.css'
-import { BrowserRouter as Router,Routes,Route,Link } from 'react-router-dom'
-
-import RecipeList from './components/RecipeList'
-import RecipeDetails from './components/RecipeDetails'
-import recipes from './utils/dummyData'
+import React from "react";
 
 
 function App() {
  
 
+  
+
   return (
     <Router>
-    
-     
-
-      <Link  to="/">Recipies</Link>
+      <Link to="/">Recipies</Link>
 
       <Routes>
-
-        <Route path='/'element={<RecipeList recipes={recipes} />} />
-        <Route path='/recipe/:id' element={<RecipeDetails recipes={recipes}/>}/>
+        <Route path="/" element={<RecipeList  />} />
+        <Route
+          path="/recipe/:id"
+          element={<RecipeDetails  />}
+        />
       </Routes>
-
-
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
