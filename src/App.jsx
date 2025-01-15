@@ -1,5 +1,10 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from '@tanstack/react-query'
 
 import RecipeList from "./components/RecipeList";
 import RecipeDetails from "./components/RecipeDetails";
@@ -10,10 +15,11 @@ import AddRecipeForm from "./components/AddRecipeForm";
 
 function App() {
  
-
+  const queryClient = new QueryClient()
   
 
   return (
+    <QueryClientProvider client={queryClient}>
     <Router>
       <Link to="/">Recipies</Link>
       <Link to="/add">add</Link>
@@ -27,6 +33,7 @@ function App() {
         />
       </Routes>
     </Router>
+    </QueryClientProvider>
   );
 }
 
