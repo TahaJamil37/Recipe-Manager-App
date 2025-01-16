@@ -4,13 +4,18 @@ import axios from 'axios'
 export const SuperHeroesPage = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState([])
+  const [error, seterror] = useState(null);
+
 
   useEffect(() => {
     axios.get('http://localhost:4000/superheroes').then(res => {
       setData(res.data)
       setIsLoading(false)
-    })
-  }, [])
+    }).catch((error)=>{
+      seterror(error.message)
+      setIsLoading(false)
+    
+    }), []})
 
   if (isLoading) {
     return <h2>Loading...</h2>
@@ -19,6 +24,8 @@ export const SuperHeroesPage = () => {
   return (
     <>
       <h2>Super Heroes Page</h2>
+      <h2>{error}</h2>
+      
       {data.map(hero => {
         return <div>{hero.name}</div>
       })}
