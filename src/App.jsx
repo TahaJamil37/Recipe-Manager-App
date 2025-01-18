@@ -14,6 +14,7 @@ import React from "react";
 import AddRecipeForm from "./components/AddRecipeForm";
 import RQSuperheroes from "./components/RQSuperheroes";
 import  {SuperHeroesPage}  from "./components/SuperHeroes";
+import ParallelQueries from "./components/ParallelQueries";
 
 
 function App() {
@@ -29,12 +30,14 @@ function App() {
       <Link style={{margin:'4%'}} to="/add">add</Link>
       <Link  style={{margin:'4%'}}to="/myhero">superhero1</Link>
       <Link style={{margin:'4%'}} to="/superhero">superhero_query</Link>
+      <Link style={{margin:'4%'}} to="/parallel">Parrallel Quries</Link>
       </div>
       <Routes>
         <Route path="/" element={<RecipeList  />} />
         <Route path="/add" element={<AddRecipeForm  />} />
         <Route path="/superhero" element={<RQSuperheroes  />} />
         <Route path="/myhero" element={<SuperHeroesPage  />} />
+        <Route path="/parallel" element={<ParallelQueries  />} />
         <Route
           path="/recipe/:id"
           element={<RecipeDetails  />}

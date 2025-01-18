@@ -24,6 +24,13 @@ const recipes = [
       image: "/assets/food2.jpg", // Replace with the appropriate filename
     },
   ];
+
+  export const friends = [
+    { id: 1, name: "Chandler Bing" },
+    { id: 2, name: "Joey Tribbiani" },
+    { id: 3, name: "Rachel Green" }
+  ];
+  
   
   export default recipes;
   
