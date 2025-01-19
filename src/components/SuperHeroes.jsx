@@ -1,34 +1,44 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export const SuperHeroesPage = () => {
-  const [isLoading, setIsLoading] = useState(true)
-  const [data, setData] = useState([])
-  const [error, seterror] = useState(null);
-
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/superheroes').then(res => {
-      setData(res.data)
-      setIsLoading(false)
-    }).catch((error)=>{
-      seterror(error.message)
-      setIsLoading(false)
-    
-    }), []})
+    const fetchHeroes = async () => {
+      try {
+        const response = await axios.get('http://localhost:4000/superheroes');
+        setData(response.data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchHeroes();
+  }, []); // Empty dependency array ensures this runs only once when the component mounts.
 
   if (isLoading) {
-    return <h2>Loading...</h2>
+    return <h2>Loading...</h2>;
+  }
+
+  if (error) {
+    return <h2>Error: {error}</h2>;
   }
 
   return (
     <>
       <h2>Super Heroes Page</h2>
-      <h2>{error}</h2>
-      
-      {data.map(hero => {
-        return <div>{hero.name}</div>
-      })}
+      {data.length > 0 ? (
+        data.map(hero => (
+          <div key={hero.id}>{hero.name}</div> // Added a `key` prop for proper list rendering.
+        ))
+      ) : (
+        <p>No heroes found!</p>
+      )}
     </>
-  )
-}
+  );
+};
