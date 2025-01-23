@@ -15,6 +15,13 @@ import AddRecipeForm from "./components/AddRecipeForm";
 import RQSuperheroes from "./components/RQSuperheroes";
 import  {SuperHeroesPage}  from "./components/SuperHeroes";
 import ParallelQueries from "./components/ParallelQueries";
+import CakeView from "./features/cake/CakeView";
+import IceCreamView from "./features/icecream/iceCreamView";
+import UserView from "./features/user/userView";
+
+
+
+
 
 
 function App() {
@@ -24,7 +31,13 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-    <Router>
+
+
+  <CakeView/>
+  <IceCreamView/>
+  <UserView/>
+   
+    {/* <Router>
       <div style={{display:'flex',justifyContent:'space-evenly', alignItems:'center'}}>
       <Link style={{margin:'4%'}} to="/">Recipies</Link>
       <Link style={{margin:'4%'}} to="/add">add</Link>
@@ -43,8 +56,8 @@ function App() {
           element={<RecipeDetails  />}
         />
       </Routes>
-    </Router>
-    <ReactQueryDevtools initialIsOpen={true} position="bottom-right" />
+    </Router> */}
+    <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
   );
 }
